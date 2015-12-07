@@ -21,8 +21,8 @@
 
 ## Copying / License
 1. MIT
-2. LINKWARE for favicons: (http://www.pelfusion.com)[http://www.pelfusion.com]
+2. LINKWARE for favicons: [pelfusion.com](http://www.pelfusion.com).
 
 ## Bugs
 1. Report via pull request and/or comments.
-2. Current bugs are on [github issus](https://github.com/ArgonCode/TimeTab/issues) and [waffle](https://waffle.io/ArgonCode/calculator).
+2. Current bugs are on [github issus](https://github.com/ArgonCode/calculator/issues) and [waffle](https://waffle.io/ArgonCode/calculator).
