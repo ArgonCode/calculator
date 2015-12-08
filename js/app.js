@@ -65,3 +65,20 @@ function addFloat() {
   }
 }
 
+// CLEAR BUTTONS
+document.getElementById("clear-all").addEventListener('click', clearAll, false);
+document.getElementById("clear-last").addEventListener('click', clearLast, false);
+
+function clearAll() {
+  currentInput = "0";
+  operation = [];
+}
+
+function clearLast() {
+  if(currentInput === "0") {
+    operation.pop(); // removes the operator
+    currentInput = operation.pop()["value"].toString();  // reasigns the currentInput to what it was before, removes from array as well
+  } else {
+    currentInput = currentInput.slice(0, -1);
+  }
+}
