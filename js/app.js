@@ -43,3 +43,25 @@ for(var i = 0; i < operators.length; i++){
 }
 
 
+// FLOATING POINT
+document.getElementById("float").addEventListener('click', addFloat, false);
+
+// check floating point
+function floatCheck() {
+  if(currentInput.indexOf('.') === -1) {
+    return false; // not there
+  } else {
+    return true; // there
+  }
+}
+
+// add floating point
+function addFloat() {
+  isThere = floatCheck();
+  currentInput += ".";
+  if(isThere) {
+    console.log("error");
+    return "Error message";
+  }
+}
+
