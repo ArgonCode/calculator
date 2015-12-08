@@ -23,3 +23,23 @@ var returnNumber = function() {
 for(var i = 0; i < numbers.length; i++){
   numbers[i].addEventListener('click', returnNumber, false);
 }
+// OPERATORS
+var operators = document.getElementsByClassName("operators");
+
+function returnOperator() {
+  // TODO: display operator
+  currentInput = parseFloat(currentInput);
+  currentInputObject = { "value": currentInput, "type": "number"};
+  currentOperator = this.textContent;
+  currentOperatorObject = { "value": currentOperator, "type": "operator"};
+  operation.push(currentInputObject, currentOperatorObject);
+  currentInput = "0";
+  console.log(operation);
+}
+
+// Attach event listeners to all operators
+for(var i = 0; i < operators.length; i++){
+  operators[i].addEventListener('click', returnOperator, false);
+}
+
+
