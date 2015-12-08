@@ -1,28 +1,23 @@
-var currentInput = "";
+var currentInput = "0";
+var operation = [];
 
-// document.getElementById('7').addEventListener("click",function(){
-//   currentInput += 7;
-//   console.log(currentInput);
-//   console.log(typeof currentInput);
-// });
-//
-// document.getElementsByClassName('btn').addEventListener("click",function(){
-//   console.log(this.value);
-//   currentInput += 4;
-//   console.log("btn");
-//   console.log(typeof currentInput);
-// });
+// NUMBERS
+var numbers = document.getElementsByClassName("number");
 
-var numbers = document.getElementsByClassName("btn");
-
-var returnNumber = function() {
-  console.log(this.textContent);
-};
+function returnNumber() {
+  if(currentInput === "0") {
+    currentInput = this.textContent;
+  } else {
+    currentInput += this.textContent;
+  }
+  console.log(currentInput);
+}
 
 // Attach event listeners to all numbers
 for(var i = 0; i < numbers.length; i++){
   numbers[i].addEventListener('click', returnNumber, false);
 }
+
 // OPERATORS
 var operators = document.getElementsByClassName("operators");
 
