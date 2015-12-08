@@ -1,6 +1,13 @@
 var currentInput = "0";
 var operation = [];
 
+/***********************************************************************/
+// Add .last to methods of array
+if(!Array.prototype.last){
+    Array.prototype.last = function(){
+        return this[this.length - 1];
+    };
+}
 // NUMBERS
 var numbers = document.getElementsByClassName("number");
 
@@ -18,17 +25,28 @@ for(var i = 0; i < numbers.length; i++){
   numbers[i].addEventListener('click', returnNumber, false);
 }
 
+/***********************************************************************/
 // OPERATORS
 var operators = document.getElementsByClassName("operators");
 
 function returnOperator() {
-  // TODO: display operator
-  currentInput = parseFloat(currentInput);
-  currentInputObject = { "value": currentInput, "type": "number"};
   currentOperator = this.textContent;
   currentOperatorObject = { "value": currentOperator, "type": "operator"};
-  operation.push(currentInputObject, currentOperatorObject);
-  currentInput = "0";
+
+  currentInput = parseFloat(currentInput);
+  currentInputObject = { "value": currentInput, "type": "number"};
+
+  if(operation.length === 0) {
+    operation.push(currentInputObject, currentOperatorObject);
+    currentInput = "0";
+  } else if(operation.last().type === "operator") {
+    operation.pop(); // remove last operator;
+    operation.push(currentOperatorObject); //update it with new one
+  } else {
+    operation.push(currentInputObject, currentOperatorObject);
+    currentInput = "0";
+  }
+
   console.log(operation);
 }
 
