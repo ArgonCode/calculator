@@ -3,6 +3,15 @@ var operation = [];
 var result;
 
 /***********************************************************************/
+// update displayed value
+var display = document.getElementById("calc-display");
+display.addEventListener('click', updateDisplay, false);
+
+function updateDisplay(value) {
+  display.textContent = value;
+}
+
+/***********************************************************************/
 // NUMBERS
 var numbers = document.getElementsByClassName("number");
 
