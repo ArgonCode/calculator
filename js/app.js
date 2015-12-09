@@ -93,14 +93,15 @@ function clearAll() {
 }
 
 function clearLast() {
-  if(currentInput === "0") {
+  if(currentInput === "") {
     operation.pop(); // removes the operator
     currentInput = operation.pop().value.toString();  // reasigns the currentInput to what it was before, as a string, removes from calculatiion array as well
-    updateDisplay(currentInput);
+  } else if(currentInput.length === 1) {
+    currentInput = "0";
   } else {
     currentInput = currentInput.slice(0, -1);
-    updateDisplay(currentInput);
   }
+    updateDisplay(currentInput);
 }
 // TODO: add a gigantic display in first line, moving to the left, with everything there so far ?
 // TODO: will this require order of operations ?
