@@ -21,7 +21,7 @@ function returnNumber() {
   } else {
     currentInput += this.textContent;
   }
-  console.log(currentInput);
+  updateDisplay(currentInput);
 }
 
 // Attach event listeners to all numbers
@@ -47,7 +47,7 @@ function returnOperator() {
     operation.push(currentInputObject, currentOperatorObject);
     currentInput = "";
   }
-  console.log(operation);
+  updateDisplay(currentOperator);
 }
 
 // Attach event listeners to all operators
@@ -72,11 +72,13 @@ function floatCheck() {
 function addFloat() {
   isThere = floatCheck();
   if(isThere) {
-    console.log("error");
+    updateDisplay(currentInput);
   } else if(currentInput === ""){
     currentInput = "0.";
+    updateDisplay(currentInput);
   } else {
     currentInput += ".";
+    updateDisplay(currentInput);
   }
 }
 /***********************************************************************/
@@ -87,14 +89,17 @@ document.getElementById("clear-last").addEventListener('click', clearLast, false
 function clearAll() {
   currentInput = "0";
   operation = [];
+  updateDisplay(currentInput);
 }
 
 function clearLast() {
   if(currentInput === "0") {
     operation.pop(); // removes the operator
     currentInput = operation.pop().value.toString();  // reasigns the currentInput to what it was before, as a string, removes from calculatiion array as well
+    updateDisplay(currentInput);
   } else {
     currentInput = currentInput.slice(0, -1);
+    updateDisplay(currentInput);
   }
 }
 // TODO: add a gigantic display in first line, moving to the left, with everything there so far ?
@@ -119,18 +124,19 @@ function getResult() {
   if(currentInput === "") {
     operation.pop(); // remove last operator
   } else if (currentInput === "0") {
-    console.log(currentInput);
+    console.log(currentInput); // turn into a number
+    updateDisplay(currentInput);
     //return currentInput;
   } else if (operation.length === 0) {
-    console.log(currentInput);
-    //return currentInput;
+    console.log(currentInput); // turn into a number
+    updateDisplay(currentInput);
   } else {
     currentInput = parseFloat(currentInput);
     currentInputObject = { "value": currentInput, "type": "number"};
     operation.push(currentInputObject);
-
-    a = calculateResult();
-    console.log(a);
+    currentInput = calculateResult();
+    
+    updateDisplay(currentInput);
   }
 }
 
