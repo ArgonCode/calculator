@@ -1,6 +1,6 @@
 # README
 ## Calulator
-**Calculator** is a simple JavaScript calculator.
+**Calculator** is a simple JavaScript calculator. It is written in vanilla JavaScript.
 
 ![](img/readme.png)
 
@@ -12,12 +12,18 @@
 ### Used tech and libraries
 1. HTML
 2. CSS
-3. JavaScript
-4. jQuery
+3. JavaScript. Vanilla, no frameworks.
 
-## Current features:
+## Takes into account:
+1. Floating points are ignored after one is already present.
+2. Pressing operator more than once:
+  * if the operator is the same, nothing happens,
+  * if the operator is different than before, it gets updated.
+3. When the operation is calculated, it is displayed, and the number can be treated as if it was entered manually.
+4. It can be operated by clicking on the calculator or using keyboard keys.
 
-## Planned features
+## Does not take into account:
+1. Order of operation is not taken into account. E.g.: inputing `3 + 2 * 2` will result in `10` not in `12`.
 
 ## Copying / License
 1. MIT
