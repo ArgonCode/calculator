@@ -16,10 +16,17 @@ function updateDisplay(value) {
 var numbers = document.getElementsByClassName("number");
 
 function returnNumber() {
-  if(currentInput === "0" || currentInput === "") {
-    currentInput = this.textContent;
+  var value;
+  if(typeof arguments[0] === "string") {
+    value = arguments[0];
   } else {
-    currentInput += this.textContent;
+    value = this.textContent;
+  }
+
+  if(currentInput === "0" || currentInput === "") {
+    currentInput = value;
+  } else {
+    currentInput += value;
   }
   updateDisplay(currentInput);
 }
@@ -136,7 +143,8 @@ function getResult() {
     currentInputObject = { "value": currentInput, "type": "number"};
     operation.push(currentInputObject);
     currentInput = calculateResult();
-    
+
+    currentInput = currentInput.toString();
     updateDisplay(currentInput);
   }
 }
@@ -203,3 +211,65 @@ function calculateAny3(result, oparationArray) {
   }
   return result;
 }
+
+
+/****************************************************************/
+// Add keypress events
+
+window.addEventListener("keydown", checkKeyPressed, false);
+
+function checkKeyPressed(e) {
+  switch (e.which) {
+    case 48:
+    case 96:
+      returnNumber("0");
+      break;
+    case 49:
+    case 97:
+      returnNumber("1");
+      break;
+    case 50:
+    case 98:
+      returnNumber("2");
+      break;
+    case 51:
+    case 99:
+      returnNumber("3");
+      break;
+    case 52:
+    case 100:
+      returnNumber("4");
+      break;
+    case 53:
+    case 101:
+      returnNumber("5");
+      break;
+    case 54:
+    case 102:
+      returnNumber("6");
+      break;
+    case 55:
+    case 103:
+      returnNumber("7");
+      break;
+    case 56:
+    case 104:
+      returnNumber("8");
+      break;
+    case 57:
+    case 105:
+      returnNumber("9");
+      break;
+    default:
+      break;
+  }
+}
+
+//
+//
+// multiply	106
+// add	107
+// subtract	109
+// decimal point	110
+// divide	111
+// period	190
