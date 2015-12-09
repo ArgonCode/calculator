@@ -12,7 +12,8 @@
 ### Used tech and libraries
 1. HTML
 2. CSS
-3. JavaScript. Vanilla, no frameworks.
+3. JavaScript. Vanilla, no frameworks. Procedural approach.
+4. Getting keyboard codes: [www.asquare.net/javascript/tests/KeyCode.html](http://www.asquare.net/javascript/tests/KeyCode.html).
 
 ## Takes into account:
 1. Floating points are ignored after one is already present.
@@ -20,10 +21,10 @@
   * if the operator is the same, nothing happens,
   * if the operator is different than before, it gets updated.
 3. When the operation is calculated, it is displayed, and the number can be treated as if it was entered manually.
-4. It can be operated by clicking on the calculator or using keyboard keys.
+4. It can be operated by clicking on the calculator or using keyboard keys. Numeric keypad should work on any layout. Keyboard `*`, `+`, `-`, `=`, `/` are set-up using generic US and Polish programmer layouts. It should work in most keyboards. No promises made though :)
 
 ## Does not take into account:
-1. Order of operation is not taken into account. E.g.: inputing `3 + 2 * 2` will result in `10` not in `12`.
+1. Order of operation is not taken into account. E.g.: inputing `3 + 2 * 2` will result in `10` not in `7`.
 
 ## Copying / License
 1. MIT
