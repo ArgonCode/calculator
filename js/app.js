@@ -98,3 +98,33 @@ function clearLast() {
     currentInput = currentInput.slice(0, -1);
   }
 }
+/***********************************************************************/
+// CALCULATE RESULT
+document.getElementById("get-result").addEventListener('click', getResult, false);
+
+function getResult() {
+  /****************************************************************************
+  There are only 3 options for input
+  1. "0" - when nothing was there yet
+  2. e.g.: "4554" - some number
+    a) as a first timer
+    b) not first timer
+  3. "" - after operator was used and no number was inserted afterwards
+  ****************************************************************************/
+  if(currentInput === "") {
+    operation.pop(); // remove last operator
+  } else if (currentInput === "0") {
+    console.log(currentInput);
+    //return currentInput;
+  } else if (operation.length === 0) {
+    console.log(currentInput);
+    //return currentInput;
+  } else {
+    a = calculateResult();
+    console.log(calculateResult());
+  }
+}
+
+function calculateResult() {
+  return "result";
+}
