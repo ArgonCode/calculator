@@ -12,7 +12,7 @@ if(!Array.prototype.last){
 var numbers = document.getElementsByClassName("number");
 
 function returnNumber() {
-  if(currentInput === "0") {
+  if(currentInput === "0" || currentInput === "") {
     currentInput = this.textContent;
   } else {
     currentInput += this.textContent;
@@ -33,20 +33,16 @@ function returnOperator() {
   currentOperator = this.textContent;
   currentOperatorObject = { "value": currentOperator, "type": "operator"};
 
-  currentInput = parseFloat(currentInput);
-  currentInputObject = { "value": currentInput, "type": "number"};
-
-  if(operation.length === 0) {
-    operation.push(currentInputObject, currentOperatorObject);
-    currentInput = "0";
-  } else if(operation.last().type === "operator") {
+  if(currentInput === "") {
     operation.pop(); // remove last operator;
     operation.push(currentOperatorObject); //update it with new one
   } else {
-    operation.push(currentInputObject, currentOperatorObject);
-    currentInput = "0";
-  }
+    currentInput = parseFloat(currentInput);
+    currentInputObject = { "value": currentInput, "type": "number"};
 
+    operation.push(currentInputObject, currentOperatorObject);
+    currentInput = "";
+  }
   console.log(operation);
 }
 
