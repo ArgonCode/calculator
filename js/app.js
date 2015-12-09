@@ -1,13 +1,8 @@
 var currentInput = "0";
 var operation = [];
+var result;
 
 /***********************************************************************/
-// Add .last to methods of array
-if(!Array.prototype.last){
-    Array.prototype.last = function(){
-        return this[this.length - 1];
-    };
-}
 // NUMBERS
 var numbers = document.getElementsByClassName("number");
 
@@ -52,7 +47,6 @@ for(var i = 0; i < operators.length; i++){
 }
 
 /***********************************************************************/
-
 // FLOATING POINT
 document.getElementById("float").addEventListener('click', addFloat, false);
 
@@ -76,7 +70,7 @@ function addFloat() {
     currentInput += ".";
   }
 }
-
+/***********************************************************************/
 // CLEAR BUTTONS
 document.getElementById("clear-all").addEventListener('click', clearAll, false);
 document.getElementById("clear-last").addEventListener('click', clearLast, false);
@@ -89,11 +83,15 @@ function clearAll() {
 function clearLast() {
   if(currentInput === "0") {
     operation.pop(); // removes the operator
-    currentInput = operation.pop()["value"].toString();  // reasigns the currentInput to what it was before, removes from array as well
+    currentInput = operation.pop().value.toString();  // reasigns the currentInput to what it was before, as a string, removes from calculatiion array as well
   } else {
     currentInput = currentInput.slice(0, -1);
   }
 }
+// TODO: add a gigantic display in first line, moving to the left, with everything there so far ?
+// TODO: will this require order of operations ?
+// TODO: it could have it in ladder like lines
+
 /***********************************************************************/
 // CALCULATE RESULT
 document.getElementById("get-result").addEventListener('click', getResult, false);
@@ -106,6 +104,8 @@ function getResult() {
     a) as a first timer
     b) not first timer
   3. "" - after operator was used and no number was inserted afterwards
+    a) when after removing operator, one element is left
+    b) more than one
   ****************************************************************************/
   if(currentInput === "") {
     operation.pop(); // remove last operator
@@ -116,11 +116,74 @@ function getResult() {
     console.log(currentInput);
     //return currentInput;
   } else {
+    currentInput = parseFloat(currentInput);
+    currentInputObject = { "value": currentInput, "type": "number"};
+    operation.push(currentInputObject);
+
     a = calculateResult();
-    console.log(calculateResult());
+    console.log(a);
   }
 }
 
 function calculateResult() {
-  return "result";
+  var len = operation.length;
+  var result = 1;
+
+  if(len === 1){
+    result = operation[0].value;
+  } else {
+    result = calculateFirst3(operation);
+    while(operation.length >= 2) {
+      result = calculateAny3(result, operation);
+    }
+  }
+  return result;
+}
+
+function calculateFirst3(oparationArray) {
+  var result = 1;
+
+  num1 = oparationArray.shift().value;
+  operator = oparationArray.shift().value;
+  num2 = oparationArray.shift().value;
+
+  console.log();
+  switch (operator) {
+    case "x":
+      result = num1 * num2;
+      break;
+    case "/":
+      result = num1 / num2;
+      break;
+    case "-":
+      result = num1 - num2;
+      break;
+    case "+":
+      result = num1 + num2;
+      break;
+  }
+  return result;
+}
+
+
+function calculateAny3(result, oparationArray) {
+  num1 = result;
+  operator = oparationArray.shift().value;
+  num2 = oparationArray.shift().value;
+
+  switch (operator) {
+    case "x":
+      result = num1 * num2;
+      break;
+    case "/":
+      result = num1 / num2;
+      break;
+    case "-":
+      result = num1 - num2;
+      break;
+    case "+":
+      result = num1 + num2;
+      break;
+  }
+  return result;
 }
