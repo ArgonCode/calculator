@@ -41,7 +41,15 @@ for(var i = 0; i < numbers.length; i++){
 var operators = document.getElementsByClassName("operators");
 
 function returnOperator() {
-  currentOperator = this.textContent;
+  var operator;
+  if(typeof arguments[0] === "string") {
+    operator = arguments[0];
+  } else {
+    operator = this.textContent;
+  }
+
+
+  currentOperator = operator;
   currentOperatorObject = { "value": currentOperator, "type": "operator"};
 
   if(currentInput === "") {
@@ -214,62 +222,83 @@ function calculateAny3(result, oparationArray) {
 
 
 /****************************************************************/
-// Add keypress events
+// Add keyboard events
 
-window.addEventListener("keydown", checkKeyPressed, false);
+window.addEventListener("keyup", checkKeyUp, false);
 
-function checkKeyPressed(e) {
-  switch (e.which) {
-    case 48:
-    case 96:
-      returnNumber("0");
-      break;
-    case 49:
-    case 97:
-      returnNumber("1");
-      break;
-    case 50:
-    case 98:
-      returnNumber("2");
-      break;
-    case 51:
-    case 99:
-      returnNumber("3");
-      break;
-    case 52:
-    case 100:
-      returnNumber("4");
-      break;
-    case 53:
-    case 101:
-      returnNumber("5");
-      break;
-    case 54:
-    case 102:
-      returnNumber("6");
-      break;
-    case 55:
-    case 103:
-      returnNumber("7");
-      break;
-    case 56:
-    case 104:
-      returnNumber("8");
-      break;
-    case 57:
-    case 105:
-      returnNumber("9");
-      break;
-    default:
-      break;
+function checkKeyUp(e) {
+  if(e.shiftKey && e.which === 187) {
+    returnOperator("+");
+  } else if(e.shiftKey && e.which === 56) {
+    returnOperator("x");
+  } else {
+    switch (e.which) {
+      case 48:
+      case 96:
+        returnNumber("0");
+        break;
+      case 49:
+      case 97:
+        returnNumber("1");
+        break;
+      case 50:
+      case 98:
+        returnNumber("2");
+        break;
+      case 51:
+      case 99:
+        returnNumber("3");
+        break;
+      case 52:
+      case 100:
+        returnNumber("4");
+        break;
+      case 53:
+      case 101:
+        returnNumber("5");
+        break;
+      case 54:
+      case 102:
+        returnNumber("6");
+        break;
+      case 55:
+      case 103:
+        returnNumber("7");
+        break;
+      case 56:
+      case 104:
+        returnNumber("8");
+        break;
+      case 57:
+      case 105:
+        returnNumber("9");
+        break;
+      case 106:
+        returnOperator("x");
+        break;
+      case 107:
+        returnOperator("+");
+        break;
+      case 109:
+      case 189:
+        returnOperator("-");
+        break;
+      case 111:
+      case 191:
+        returnOperator("/");
+        break;
+      case 110:
+      case 190:
+      case 188:
+        addFloat(); // period, point, and comma (for the Poles :))
+        break;
+      case 187:
+      case 13:
+      case 176:
+        getResult();
+        break;
+      default:
+        break;
+    }
   }
 }
-
-//
-//
-// multiply	106
-// add	107
-// subtract	109
-// decimal point	110
-// divide	111
-// period	190
