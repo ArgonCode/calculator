@@ -55,6 +55,7 @@ for(var i = 0; i < operators.length; i++){
   operators[i].addEventListener('click', returnOperator, false);
 }
 
+/***********************************************************************/
 
 // FLOATING POINT
 document.getElementById("float").addEventListener('click', addFloat, false);
@@ -71,10 +72,12 @@ function floatCheck() {
 // add floating point
 function addFloat() {
   isThere = floatCheck();
-  currentInput += ".";
   if(isThere) {
     console.log("error");
-    return "Error message";
+  } else if(currentInput === ""){
+    currentInput = "0.";
+  } else {
+    currentInput += ".";
   }
 }
 
