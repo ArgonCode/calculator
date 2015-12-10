@@ -7,8 +7,8 @@ var result;
 var display = document.getElementById("calc-display");
 display.addEventListener('click', updateDisplay, false);
 
-function updateDisplay(value) {
-  display.textContent = value;
+function updateDisplay(num) {
+  display.value = num;
 }
 
 /***********************************************************************/
