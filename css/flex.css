@@ -1,0 +1,67 @@
+* {
+  font-family: 'Aclonica', sans-serif;
+  font-size: 1.1em;
+}
+
+html{
+  background: url(../img/background.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+  margin: 10%;
+}
+
+.calc-body {
+  color: #daf0ee;
+  background-color: #9db5b2;
+  width: 295px;
+  padding: 4px;
+}
+
+.flex {
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: row;
+   flex-direction: row;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: left;
+   justify-content: left;
+}
+
+button {
+  background: rgba(15 , 26 , 32 , .9);
+  min-width: 68px;
+  min-height: 68px;
+  margin: 3px;
+}
+
+.number {
+  background: rgba(14 , 39 , 60 , .9);
+}
+
+#clear-all, #clear-last {
+  min-width: 142px;
+  min-height: 34px;
+  background: rgba(197 , 41 , 4 , .7);
+}
+
+input {
+  color: #daf0ee;
+  background-color: #000;
+  text-align: right;
+  width: 286px;
+  margin-top: 3px;
+  margin-left: 3px;
+  margin-bottom: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: 1.3em;
+  -webkit-box-shadow: inset 0px 0px 12px 3px rgba(255,255,255,1);
+  -moz-box-shadow: inset 0px 0px 12px 3px rgba(255,255,255,1);
+  box-shadow: inset 0px 0px 12px 3px rgba(255,255,255,1);
+}
