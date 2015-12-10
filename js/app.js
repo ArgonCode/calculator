@@ -297,7 +297,7 @@ function checkKeyUp(e) {
       case 176:
         getResult();
         break;
-      case 32:
+      case 27:
         clearAll();
         break;
       case 46:
